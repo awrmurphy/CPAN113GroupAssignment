@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-        <script defer src="script.js"></script>
+    <script defer src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
         <main>
-        <section class="registration-form">
+        <section id="registration-form" class="registration-form">
             <h2>Create Your Account</h2>
-            <form action="#" method="POST">
+            <form action="#" name="registration-form" method="POST">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
 
@@ -37,9 +38,10 @@
                     <option value="other">Other</option>
                 </select>
 
-                <button type="submit">Register</button>
+                <button type="submit" id="register" onclick="validateRegForm()">Register</button>
             </form>
         </section>
+        <h2 id="userMessage" visibility="hidden"></h2>
     </main>
 
     <footer>
