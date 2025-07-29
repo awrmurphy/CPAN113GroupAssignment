@@ -1,0 +1,62 @@
+/* Registration Form Styles */
+* {
+  box-sizing: border-box  
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: azure;
+    color: rgb(12, 12, 12);
+    padding: 20px;
+}
+
+main {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: aliceblue;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(red, green, blue, alpha);
+}
+
+h2 {
+    text-align: center;
+   margin-bottom: 20px; 
+}
+
+form { 
+    display: flex;
+    flex-direction: column;
+}
+
+label { 
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+
+input, select, button {
+    padding: auto;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+button {
+    background-color: #4caf50;
+    color: whitesmoke;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #6c6969
+}
