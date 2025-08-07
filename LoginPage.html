@@ -11,8 +11,10 @@
     <main>
         <section>
             <h2>Login</h2>
-           
-            <form action="#" method="POST">
+           <!--create login function that runs when login is clicked-->
+           <!--function will check if username or email have a value that matches with a user object-->
+           <!--function will verify that matching user object pass == password value-->
+            <form action="#" method="POST"><!--get rid of action and method-->
                 <b>Please Enter Your Email or Username, and your password</b>
                 <br>
                 <label for="email">Email</label>
@@ -28,7 +30,7 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
                 <br>
-                <button type="submit">Login</button>
+                <button type="submit">Login</button><!--remove type add event listener-->
             </form>
         </section>
         <nav>
