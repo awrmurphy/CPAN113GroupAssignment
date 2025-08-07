@@ -1,9 +1,20 @@
-const register = document.getElementById("register");
-var user;
 
+let users= [];
+var loggedInUser;
+document.body.onload= checkUser();
+
+function checkUser(){
+    if(users[0]==undefined){
+        users = JSON.parse(localStorage.getItem("users"));
+        console.log(users);
+    }
+    if (users.some((id) => id.userID === loggedInUser)){
+        console.log(loggedInUser);
+    }
+}
 
 function validateRegForm(){
-
+    event.preventDefault();
     let x =document.forms["registration-form"]["email"].value;
     if(x==""){
         alert("Please enter a valid email to create your profile.");
@@ -14,7 +25,7 @@ function validateRegForm(){
         return false;
     }
     let y = document.forms["registration-form"]["username"].value;
-    if(localStorage.getItem(y) != null){
+    if(users.some((el)=> el.userID === y)){
         alert("This username is taken.");
         return false;
     }
@@ -39,23 +50,37 @@ function validateRegForm(){
         return false;
     }
     else{
-     user = document.getElementById("username").value;
-     var pass = document.getElementById("password").value;
-     localStorage.setItem(user,pass);
-     localStorage.setItem(user+"User",user);
-     localStorage.setItem(user+"Email",document.getElementById("email").value);
-     localStorage.setItem(user+"Fname",document.getElementById("name").value);
-     localStorage.setItem(user+"Age",document.getElementById("age").value);
-     localStorage.setItem(user+"Gender",document.getElementById("gender").value);
+        if(users!=null){
+        users.push(new Object({
+            userID : document.getElementById("username").value,
+            pass : document.getElementById("password").value,
+            email : document.getElementById("email").value,
+            fName : document.getElementById("name").value,
+            age : document.getElementById("age").value,
+            gender : document.getElementById("gender").value 
+        }));}if(users == null){
+            users=[ {
+            userID : document.getElementById("username").value,
+            pass : document.getElementById("password").value,
+            email : document.getElementById("email").value,
+            fName : document.getElementById("name").value,
+            age : document.getElementById("age").value,
+            gender : document.getElementById("gender").value 
+        }]
+        }
+        
+        localStorage.setItem("users",JSON.stringify(users));
+        loggedInUser = users[users.length-1].userID;
+        location.href="index.html";
      return true;
     }
 }
 // document.getElementById("registration-form").onload = function welcomeUser(){
 //     console.log("working");
     
-// if(user!=null){
+// if(users!=null){
 //     document.getElementById("registration-form").style.visibility="hidden";
 //     document.getElementById("userMessage").style.visibility="visible";
-//     document.getElementById("userMessage").innerHTML("Welcome "+localStorage.getItem(user+"Fname")+"!")
+//     document.getElementById("userMessage").innerHTML("Welcome "+localStorage.getItem(users+"Fname")+"!")
 // }
 // }
