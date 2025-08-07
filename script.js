@@ -6,10 +6,10 @@ document.body.onload= checkUser();
 function checkUser(){
     if(users[0]==undefined){
         users = JSON.parse(localStorage.getItem("users"));
-        console.log(users);
+        
     }
     if (users.some((id) => id.userID === loggedInUser)){
-        console.log(loggedInUser);
+        
     }
 }
 
