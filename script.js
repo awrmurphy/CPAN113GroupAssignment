@@ -2,14 +2,26 @@
 let users= [];
 var loggedInUser;
 document.body.onload= checkUser();
+const aTags = document.querySelectorAll("a");
+aTags.forEach(function(el){
+    el.addEventListener('click',passCred());
+});
+
+function passCred(){
+    localStorage.setItem('loggedUser',loggedInUser);
+    localStorage.setItem('users',JSON.stringify(users));
+}
 
 function checkUser(){
+    loggedInUser=localStorage.getItem("loggedUser");
+    console.log(loggedInUser);
+    
     if(users[0]==undefined){
         users = JSON.parse(localStorage.getItem("users"));
         
     }
     if (users.some((id) => id.userID === loggedInUser)){
-        
+        welcomeUser();
     }
 }
 
@@ -25,9 +37,11 @@ function validateRegForm(){
         return false;
     }
     let y = document.forms["registration-form"]["username"].value;
-    if(users.some((el)=> el.userID === y)){
-        alert("This username is taken.");
-        return false;
+    if(users!=null){
+        if(users.some((el)=> el.userID === y)){
+            alert("This username is taken.");
+            return false;
+        }
     }
     let z = document.forms["registration-form"]["password"].value;
     let z2 = document.forms["registration-form"]["confirm-password"].value;
@@ -70,17 +84,22 @@ function validateRegForm(){
         }
         
         localStorage.setItem("users",JSON.stringify(users));
-        loggedInUser = users[users.length-1].userID;
-        location.href="index.html";
+        localStorage.setItem("loggedUser",users[users.length-1].userID);
+        location.href="RegPage.html";
      return true;
     }
 }
-// document.getElementById("registration-form").onload = function welcomeUser(){
-//     console.log("working");
+
+function welcomeUser(){
+     console.log(loggedInUser);
+     
+if(loggedInUser!=null){
+    if(document.getElementById("registration-form")!=undefined){
+    document.getElementById("registration-form").style.visibility="hidden";
+    }
+    var welcomeMessage = document.createElement('h2');
+    welcomeMessage.innerHTML = "Welcome "+loggedInUser+"!";
+    document.body.appendChild(welcomeMessage);
     
-// if(users!=null){
-//     document.getElementById("registration-form").style.visibility="hidden";
-//     document.getElementById("userMessage").style.visibility="visible";
-//     document.getElementById("userMessage").innerHTML("Welcome "+localStorage.getItem(users+"Fname")+"!")
-// }
-// }
+}
+}
