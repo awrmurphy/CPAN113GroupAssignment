@@ -96,9 +96,12 @@ if(loggedInUser!=null){
     if(document.getElementById("registration-form")!=undefined){
     document.getElementById("registration-form").style.visibility="hidden";
     }
+    if(document.getElementById('loginForm')!=undefined){
+        document.getElementById('loginForm').style.visibility='hidden';
+    }
     var welcomeMessage = document.createElement('h2');
     welcomeMessage.innerHTML = "Welcome "+loggedInUser+"!";
-    document.body.appendChild(welcomeMessage);
+    document.body.prepend(welcomeMessage);
     var logout = document.createElement('button');
     logout.setAttribute('id','logoutButton');
     logout.style.position = 'absolute';
