@@ -15,7 +15,7 @@ main {
     margin: 50px auto;
     background-color: aliceblue;
     padding: 30px;
-    box-shadow: 0 4px 8px rgba(red, green, blue, alpha);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -59,4 +59,100 @@ footer {
     margin-top: 30px;
     font-size: 0.9rem;
     color: #6c6969
+}
+
+/* Main index page */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(15, 14, 14);
+    line-height: 1.6;
+    background-color:aliceblue;
+}
+
+.banner img {
+    width: 100;
+    height: auto;
+    display: block;
+}
+
+.container {
+    text-align: center;
+    background-color: azure;
+    padding: 2rem 1rem;
+    box-shadow: 0 2px 4px;
+
+}
+
+.container h1{
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #1e88e5;
+}
+
+.container p {
+    font-size: 1.2rem;
+    color: #6c6969;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #1e88e5;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+}
+
+nav ul li a:hover {
+    background-color: #1075e8;
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    padding: 2 rem;
+    border-radius: 8px;
+    box-shadow: 0 2px px;
+}
+
+
+main section {
+    margin-top: 2rem;
+}
+
+main h2, main h3 {
+    color: #1e88e5;
+    margin-bottom: 0.5rem;
+}
+
+main p, main ul {
+    font-size: 1rem;
+}
+
+main ul {
+    padding-left: 1.5rem;
+
+}
+
+main ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #1e88e5;
+    color: #ffffff;
+    margin-top: 2rem;
 }
