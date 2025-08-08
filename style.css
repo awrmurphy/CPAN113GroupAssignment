@@ -47,6 +47,7 @@ button {
     border: none;
     font-size: 1rem;
     cursor: pointer;
+    border: 1px solid #337736;
 }
 
 button:hover {

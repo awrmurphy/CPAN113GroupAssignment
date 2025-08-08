@@ -14,7 +14,6 @@ function passCred(){
 
 function checkUser(){
     loggedInUser=localStorage.getItem("loggedUser");
-    console.log(loggedInUser);
     
     if(users[0]==undefined){
         users = JSON.parse(localStorage.getItem("users"));
@@ -91,7 +90,7 @@ function validateRegForm(){
 }
 
 function welcomeUser(){
-     console.log(loggedInUser);
+
      
 if(loggedInUser!=null){
     if(document.getElementById("registration-form")!=undefined){
@@ -100,6 +99,60 @@ if(loggedInUser!=null){
     var welcomeMessage = document.createElement('h2');
     welcomeMessage.innerHTML = "Welcome "+loggedInUser+"!";
     document.body.appendChild(welcomeMessage);
-    
+    var logout = document.createElement('button');
+    logout.setAttribute('id','logoutButton');
+    logout.style.position = 'absolute';
+    logout.style.top = '0px';
+    logout.style.right = '0px';
+    logout.innerHTML = 'Log Out';
+    document.body.prepend(logout);
+    document.getElementById('logoutButton').addEventListener('click',function(){
+    loggedInUser = null;
+    location.reload();
+    });
 }
+}
+
+
+
+
+
+if(document.getElementById('loginButton')){
+document.getElementById('loginButton').addEventListener('click',function()
+{
+    event.preventDefault();
+    
+    var loginEmail = document.forms['loginForm']['email'].value;
+    var loginUser = document.forms['loginForm']['username'].value;
+    var loginPass = document.forms['loginForm']['password'].value;
+    if (loginUser && loginPass !=null){
+        
+        if(users.some((el)=> el.userID === loginUser)){
+            var index = users.findIndex(el => el.userID === loginUser);
+            if(users[index].pass === loginPass){
+                loggedInUser = users[index].userID;
+                localStorage.setItem('loggedUser',loggedInUser);
+                localStorage.setItem('users',JSON.stringify(users));
+                checkUser();
+            }
+        }  
+    } else if(loginEmail && loginPass !=null){
+            if(users.some((el)=> el.email === loginEmail)){
+                var index = users.findIndex(el => el.email === loginEmail);
+                if(users[index].pass === loginPass){
+                    loggedInUser = users[index].userID;
+                    localStorage.setItem('loggedUser',loggedInUser);
+                    localStorage.setItem('users',JSON.stringify(users));
+                    checkUser();
+                }
+            }
+        }else if(loginUser == null && loginEmail == null){
+            alert("You must enter either a valid Email OR a valid Username to continue.");
+        }else if(loginPass == null){
+            alert("You must enter a password to continue.");
+        }
+        else{
+            alert("An error has occurred.");
+        }
+});
 }
