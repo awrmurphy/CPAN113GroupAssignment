@@ -109,14 +109,16 @@ if(loggedInUser!=null){
     logout.style.right = '0px';
     logout.innerHTML = 'Log Out';
     document.body.prepend(logout);
+}
+}
+
+    if(document.getElementById('logoutButton')!=null){
     document.getElementById('logoutButton').addEventListener('click',function(){
     loggedInUser = null;
+    localStorage.setItem('loggedUser',null);
     location.reload();
     });
 }
-}
-
-
 
 
 
