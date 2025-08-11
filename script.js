@@ -99,6 +99,10 @@ if(loggedInUser!=null){
     if(document.getElementById('loginForm')!=undefined){
         document.getElementById('loginForm').style.visibility='hidden';
     }
+    if(document.getElementById('reg')!=undefined){
+        document.getElementById('reg').setAttribute('href','User.html');
+        document.getElementById('reg').innerHTML = "Your Profile";
+    }
     var welcomeMessage = document.createElement('h2');
     welcomeMessage.innerHTML = "Welcome "+loggedInUser+"!";
     document.body.prepend(welcomeMessage);
