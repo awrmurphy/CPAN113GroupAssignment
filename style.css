@@ -3,7 +3,7 @@
   box-sizing: border-box  
 }
 
-body {
+body, html {
     font-family: Arial, Helvetica, sans-serif;
     background-color: azure;
     color: rgb(12, 12, 12);
@@ -15,7 +15,7 @@ main {
     margin: 50px auto;
     background-color: aliceblue;
     padding: 30px;
-    box-shadow: 0 4px 8px rgba(red, green, blue, alpha);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -47,6 +47,7 @@ button {
     border: none;
     font-size: 1rem;
     cursor: pointer;
+    border: 1px solid #337736;
 }
 
 button:hover {
@@ -61,6 +62,180 @@ footer {
     color: #6c6969
 }
 
+/* Main index page */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(15, 14, 14);
+    line-height: 1.6;
+    background-color:aliceblue;
+}
+
+.banner img {
+    width: 100;
+    height: auto;
+    display: block;
+}
+
+.container {
+    text-align: center;
+    background-color: azure;
+    padding: 2rem 1rem;
+    box-shadow: 0 2px 4px;
+
+}
+
+.container h1{
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #1e88e5;
+}
+
+.container p {
+    font-size: 1.2rem;
+    color: #6c6969;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #1e88e5;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+}
+
+nav ul li a:hover {
+    background-color: #1075e8;
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    padding: 2 rem;
+    border-radius: 8px;
+    box-shadow: 0 2px px;
+}
 
 
+main section {
+    margin-top: 2rem;
+}
+
+main h2, main h3 {
+    color: #1e88e5;
+    margin-bottom: 0.5rem;
+}
+
+main p, main ul {
+    font-size: 1rem;
+}
+
+main ul {
+    padding-left: 1.5rem;
+
+}
+
+main ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #1e88e5;
+    color: #ffffff;
+    margin-top: 2rem;
+}
+
+.banner img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+}
+
+/* Meal Recommendations Page Styles */
+
+h2 {
+    font-size: 2rem;
+    color: #1e88e5;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #121111;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #1e88e5;
+    padding-bottom: 0.3rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin: 1rem 0 0.5rem;
+    color: #1e88e5;
+}
+
+.meal-card {
+    background-color: aliceblue;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.meal-title {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.cta {
+    background-color: #c8dff4;
+    color: azure;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 1px;
+    margin-top: 1rem;
+}
+
+.cta a {
+    color: azure;
+    background-color: none;
+    text-decoration: none;
+}
+
+.cta a:hover {
+    background-color: #cde0f4;
+}
+
+.profile-section {
+    background-color: #f3f8fc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+
+}
+
+.meal-card {
+    flex: 1;
+}
+
+.meal-card img {
+    width: 20%;
+    height: 20;
+    object-fit:contain;
+    border-bottom: 1px solid #f4f1f1;
+}
 

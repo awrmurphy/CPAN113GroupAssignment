@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+        <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section id="loginForm">
+            <h2>Login</h2>
+           <!--create login function that runs when login is clicked-->
+           <!--function will check if username or email have a value that matches with a user object-->
+           <!--function will verify that matching user object pass == password value-->
+            <form name="loginForm" >
+                <b>Please Enter Your Email or Username, and your password</b>
+                <br>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+                <b>
+                    OR
+                </b>
+                <br>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <br>
+                <br>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <button id ='loginButton'>Login</button>
+            </form>
+        </section>
+        <nav>
+            <ul>
+                <li><a href="index.html">Go Home</a></li>
+            </ul>
+        </nav>
+    </main>
+</body>
+</html>
