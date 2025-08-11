@@ -1,13 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meal Reccomendations</title>
-        <script defer src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Meal Recommendations</title>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
+
+<div class="container">
+
+<!-- Smart Meal Options -->
+<section class="smart-meal-options">
+    <h2>Meal Recommendations</h2>
+    <p>Based on your current intake and nutrition targets.</p>
+    <div class="meal-card">
+        <img src="images/Salmon-1.jpg" alt="Baked Salmon">
+        <h3>Baked Salmon with Quinoa and Broccoli</h3>
+        <p>Calories: 400 kcal | Protein: 35g | Fat: 20g</p>
+        <p>Why this meal? You're low on Vitamin D.</p>
+    </div>
+
+    <div class="meal-card">
+        <img src="images/tuna sandwich.jpeg" alt="Tuna Sandwich">
+        <h3>Tuna Salad Sandwich on Whole Wheat Bread </h3>
+        <p>Calories: 253 Kcal | Protein: 27g | Fat:20g </p>
+        <p>Why this meal? High Calorie Lunch</p>
+    </div>
+</section>
+
+<!-- Personalized Meal Recommendations -->
+<section class="personalized-meals">
+    <h2>Personalized Meal Recommendations</h2>
+    <p>Choose meals based on your lifestyle and nutritional needs.</p>
+</section>
+
+<!-- Weight Watcher Profile -->
+<section class="profile-section" id="weight-watcher">
+    <h3>Weight Watcher</h3>
+
+    <div class="meal-category">
+  <p>Start your day with these low-calorie breakfast ideas.</p>
+        <h4>Breakfast</h4>
+        <div class="meal-grid">
+            <div class="meal-card">
+                <img src="images/AvocadoToastwithEgg.jpg" alt="Avocado Toast with Eggs">
+                <div class="meal-info">
+                    <div class="meal-title">Avocado Toast with Eggs</div>
+                </div>
+            </div>
+            <div class="meal-card">
+                <img src="images/berry cottage cheese breakfast bowl.jpeg" alt="Berry Cottage Cheese Breakfast Bowl">
+                <div class="meal-info">
+                    <div class="meal-title">Berry Cottage Cheese Breakfast Bowl</div>
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+
+    <div class="meal-category">
+    <p>Easy low-carb lunch ideas to keep you on track.</p>
+        <h4>Lunch</h4>
+        <div class="meal-grid">
+            <div class="meal-card">
+                <img src="images/grilled-chicken-salad-.jpg" alt="Grilled Chicken Salad">
+                <div class="meal-info">
+                    <div class="meal-title">Grilled Chicken Salad</div>
+                </div>
+            </div>
+            <div class="meal-card">
+                <img src="images/Buffalo chicken rice bowls.jpeg" alt="Buffalo Chicken Rice Bowls">
+                <div class="meal-info">
+                    <div class="meal-title">Buffalo Chicken Rice Bowls</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="meal-category">
+      <p>Super satisfying dinner ideas filled with flavor.</p>
+        <h4>Dinner</h4>
+        <div class="meal-grid">
+            <div class="meal-card">
+                <img src="images/salmon-caesar-small-1.jpg" alt="Salmon Caesar Salad">
+                <div class="meal-info">
+                    <div class="meal-title">Salmon Caesar Salad</div>
+                </div>
+            </div>
+            <div class="meal-card">
+                <img src="images/crock pot chicken tacos.jpeg" alt="Crock Pot Chicken Tacos">
+                <div class="meal-info">
+                    <div class="meal-title">Crock Pot Chicken Tacos</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- Chronic Condition Profile -->
+<section class="profile-section" id="chronic-condition">
+    <h3>Managing a Chronic Condition</h3>
+
+    <div class="meal-category">
+      <p>High-quality protein options perfect for diabetes or heart conditions.</p>
+        <h4>Breakfast</h4>
+        <div class="meal-grid">
+            <div class="meal-card">
+                <img src="images/scrambled eggs with spinach and toast.jpeg" alt="Scrambled Eggs with Spinach">
+                <div class="meal-info">
+                    <div class="meal-title">Scrambled Eggs with Spinach and Toast</div>
+                </div>
+            </div>
+            <div class="meal-card">
+                <img src="images/overnight oats.jpeg" alt="Overnight Oats">
+                <div class="meal-info">
+                    <div class="meal-title">Overnight Oats with Berries and Nuts</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="meal-category">
+        <p>Iron and folate rich options that support heart health.</p>
+        <h4>Lunch</h4>
+        <div class="meal-grid">
+            <div class="meal-card">
+                <img src="images/lentil soup.jpeg" alt="Lentil Soup">
+                <div class="meal-info">
+                    <div class="meal-title">Lentil Soup with Whole Grain Bread</div>
+                </div>
+            </div>
+            <div class="meal-card">
+                <img src="images/grilled-chicken-salad-.jpg" alt="Grilled Chicken Salad">
+                <div class="meal-info">
+                    <div class="meal-title">Grilled Chicken Salad</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="meal-category">
+         <p>High in omega-3s, diabetic and heart-friendly.</p>
+        <h4>Dinner</h4>
+        <div class="meal-grid">
+            <div class="meal-card">
+                <img src="images/baked salmon with veg.webp" alt="Baked Salmon">
+                <div class="meal-info">
+                    <div class="meal-title">Baked Salmon with Roasted Vegetables</div>
+                </div>
+            </div>
+            <div class="meal-card">
+                <img src="images/chicken stir fry.jpeg" alt="Chicken Stir-Fry">
+                <div class="meal-info">
+                    <div class="meal-title">Chicken Stir-Fry with Brown Rice</div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</section>
+
+<!-- Family Focused Profile -->
+<section class="profile-section" id="family-focused">
+    <h3>Family Focused</h3>
+
+    <div class="meal-category">
+        <p>Nutritious and filling with a good source of healthy fats.</p>
+        
+        <h4>Breakfast</h4>
+        <div class="meal-grid">
+            <div class="meal-card">
+                <img src="images/yogurt and fruit parfaits.jpeg" alt="Yogurt Parfait">
+                <div class="meal-info">
+                    <div class="meal-title">Yogurt and Fruit Parfaits</div>
+                </div>
+            </div>
+            <div class="meal-card">
+                <img src="images/Loaded Avocado.jpeg" alt="Avocado Toast">
+                <div class="meal-info">
+                    <div class="meal-title">Loaded Avocado Toast</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="meal-category">
+         <p>Protein-packed and kid-friendly veggie options.</p>
+        <h4>Lunch</h4>
+        <div class="meal-grid">
+            <div class="meal-card">
+                <img src="images/veggie q.jpeg" alt="Veggie Quesadillas">
+                <div class="meal-info">
+                    <div class="meal-title">Veggie Quesadillas</div>
+                </div>
+            </div>
+            <div class="meal-card">
+                <img src="images/italian pasta salad.jpeg" alt="Italian Pasta Salad">
+                <div class="meal-info">
+                    <div class="meal-title">Italian Pasta Salad</div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+    <div class="meal-category">
+          <p>Minimal cleanup and balanced nutrition.</p>
+        <h4>Dinner</h4>
+        <div class="meal-grid">
+            <div class="meal-card">
+                <img src="images/slow cooker.jpeg" alt="Beef and Broccoli">
+                <div class="meal-info">
+                    <div class="meal-title">Slow Cooker Beef and Broccoli</div>
+                </div>
+            </div>
+            <div class="meal-card">
+                <img src="images/one pot.jpeg" alt="One Pot Chicken and Rice">
+                <div class="meal-info">
+                    <div class="meal-title">One-Pot Chicken and Rice</div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <p>Want more meals tailored to your nutritional needs?</p>
+    <a href="/RegPage.html">Create Your Profile</a>
+</section>
+
+</div>
 </body>
 </html>

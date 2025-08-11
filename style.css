@@ -164,3 +164,78 @@ footer {
     object-fit: cover;
     display: block;
 }
+
+/* Meal Recommendations Page Styles */
+
+h2 {
+    font-size: 2rem;
+    color: #1e88e5;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #121111;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #1e88e5;
+    padding-bottom: 0.3rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin: 1rem 0 0.5rem;
+    color: #1e88e5;
+}
+
+.meal-card {
+    background-color: aliceblue;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.meal-title {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.cta {
+    background-color: #c8dff4;
+    color: azure;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 1px;
+    margin-top: 1rem;
+}
+
+.cta a {
+    color: azure;
+    background-color: none;
+    text-decoration: none;
+}
+
+.cta a:hover {
+    background-color: #cde0f4;
+}
+
+.profile-section {
+    background-color: #f3f8fc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+
+}
+
+.meal-card {
+    flex: 1;
+}
+
+.meal-card img {
+    width: 20%;
+    height: 20;
+    object-fit:contain;
+    border-bottom: 1px solid #f4f1f1;
+}
+
