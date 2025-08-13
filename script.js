@@ -175,3 +175,18 @@ class mealPlan {
         this.fat = fat;
     }
 }
+
+if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add functionality
+    var addMeal = document.querySelectorAll("#planMeal");
+    addMeal.forEach(function(el){
+        el.addEventListener('click',function(){
+            var Parent = this.parentNode;
+            var newMeal = new mealPlan(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').value,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML);
+            
+            
+        })
+    });
+}
+
+
+    
