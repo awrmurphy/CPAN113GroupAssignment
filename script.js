@@ -3,16 +3,16 @@ let users= [];
 var loggedInUser;
 document.body.onload= checkUser();
 const aTags = document.querySelectorAll("a");
-aTags.forEach(function(el){
+aTags.forEach(function(el){//modifies functionality of a tags
     el.addEventListener('click',passCred());
 });
 
-function passCred(){
+function passCred(){//passes localStorage values between pages
     localStorage.setItem('loggedUser',loggedInUser);
     localStorage.setItem('users',JSON.stringify(users));
 }
 
-function checkUser(){
+function checkUser(){//checks to see if a user is logged in and calls welcome user if true
     loggedInUser=localStorage.getItem("loggedUser");
     
     if(users[0]==undefined){
@@ -24,7 +24,7 @@ function checkUser(){
     }
 }
 
-function validateRegForm(){
+function validateRegForm(){//custom form validation for registration page
     event.preventDefault();
     let x =document.forms["registration-form"]["email"].value;
     if(x==""){
@@ -89,7 +89,7 @@ function validateRegForm(){
     }
 }
 
-function welcomeUser(){
+function welcomeUser(){//dynamically alters pages and functionality if user is logged in
 
      
 if(loggedInUser!=null){
@@ -116,7 +116,7 @@ if(loggedInUser!=null){
 }
 }
 
-    if(document.getElementById('logoutButton')!=null){
+    if(document.getElementById('logoutButton')!=null){//adds logout button functionality if logout button exists
     document.getElementById('logoutButton').addEventListener('click',function(){
     loggedInUser = null;
     localStorage.setItem('loggedUser',null);
@@ -126,7 +126,7 @@ if(loggedInUser!=null){
 
 
 
-if(document.getElementById('loginButton')){
+if(document.getElementById('loginButton')){//Login Button functionality
 document.getElementById('loginButton').addEventListener('click',function()
 {
     event.preventDefault();
@@ -164,4 +164,14 @@ document.getElementById('loginButton').addEventListener('click',function()
             alert("An error has occurred.");
         }
 });
+}
+
+class mealPlan {
+    constructor(meal,date,cals,prot,fat) {
+        this.meal = meal;
+        this.date = date;
+        this.cals = cals;
+        this.prot = prot;
+        this.fat = fat;
+    }
 }
