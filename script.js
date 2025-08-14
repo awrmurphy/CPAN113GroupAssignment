@@ -181,10 +181,35 @@ if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add fu
     addMeal.forEach(function(el){
         el.addEventListener('click',function(){
             var Parent = this.parentNode;
-            var newMeal = new mealPlan(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').value,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML);
-            loggedInUser.mealPlan.push(newMeal);
+            var newMeal = new mealPlan(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').valueAsDate,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML);
+            
+            var i = users.findIndex(el => el.userID === loggedInUser);
+            if(users[i].mealPlan!=null){
+            users[i].mealPlan.push(newMeal);
+            }else{
+                users[i].mealPlan =[newMeal];
+                console.log(users[i]);
+                
+            }
+            
         })
     });
+}
+
+
+let curr = new Date;
+let first = curr.getDate() - curr.getDay();
+let last = first + 6;
+
+
+
+if(document.getElementsByClassName('day')!=null){
+    loggedInUser.mealPlan.forEach(function(el){
+        let thisDate = new Date(el.date);
+        if(thisDate >= first && thisDate <= last){
+           
+        }
+    })
 }
 
 
