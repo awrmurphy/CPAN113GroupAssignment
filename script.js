@@ -186,8 +186,10 @@ if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add fu
             var i = users.findIndex(el => el.userID === loggedInUser);
             if(users[i].mealPlan!=null){
             users[i].mealPlan.push(newMeal);
+            localStorage.setItem('users',JSON.stringify(users));
             }else{
                 users[i].mealPlan =[newMeal];
+                localStorage.setItem('users',JSON.stringify(users));
             } //Users is not encoding mealPlan when changing pages for some reason
             
         })
@@ -195,26 +197,34 @@ if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add fu
 }
 
 
-let curr = new Date;
-let first = curr.getDate() - curr.getDay();
-let last = first + 6;
+let date = new Date(users[0].mealPlan[0].date);
 
+let firstOfWeek = date.getUTCDate() - date.getUTCDay();
+let startOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),firstOfWeek));
+startOfWeek=startOfWeek.toUTCString();
+
+let lastOfWeek = date.getUTCDate()+(6-date.getUTCDay());
+let endOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),lastOfWeek));
+endOfWeek =endOfWeek.toUTCString();
 
 
 if(document.getElementsByClassName('day')!=null){//assigning each planned meal to the meal planner
     var i = users.findIndex(el => el.userID === loggedInUser);
-    console.log(i);
-    console.log(users[i]);
-    console.log(users[i].mealPlan);
+
     
     users[i].mealPlan.forEach(function(el){
-        let thisDate = new Date(el.mealPlan.date);
-        console.log(el.mealPlan.date);
+        
+        let thisDay = new Date(el.date);
+        let day = thisDay.getUTCDate();
+        let month = thisDay.getUTCMonth();
+        let year = thisDay.getUTCFullYear();
         
         var lineBreak = document.createElement('br');
-        if(document.getElementById(thisDate.getDay()==null)){//If no meal is already planned for this day this week
-        if(thisDate >= first && thisDate <= last){
-           var cont = document.getElementById(thisDate.getDay());
+//need to append menu to correct day in both instances
+        if(document.getElementById(`${thisDay.getUTCDay()}`)){//If no meal is already planned for this day this week
+        if(thisDay >= startOfWeek && thisDay <= endOfWeek){
+           var cont = document.getElementById(`${thisDay.getUTCDay()}`);
+           cont.setAttribute('id','menu');
            var meal = document.createElement('div');
            var mealName = document.createElement('p');
            mealName.innerHTML = `${el.mealPlan.meal}`;
@@ -233,7 +243,7 @@ if(document.getElementsByClassName('day')!=null){//assigning each planned meal t
         }
     }else
         {
-            if(thisDate >= first && thisDate <= last){//if a meal is already planned for this day this week
+            if(thisDay >= startOfWeek && thisDay <= endOfWeek){//if a meal is already planned for this day this week
            var meal = document.createElement('div');
            var mealName = document.createElement('p');
            mealName.innerHTML = `${el.mealPlan.meal}`;
