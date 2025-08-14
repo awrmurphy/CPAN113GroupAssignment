@@ -188,9 +188,7 @@ if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add fu
             users[i].mealPlan.push(newMeal);
             }else{
                 users[i].mealPlan =[newMeal];
-                console.log(users[i]);
-                
-            }
+            } //Users is not encoding mealPlan when changing pages for some reason
             
         })
     });
@@ -203,12 +201,56 @@ let last = first + 6;
 
 
 
-if(document.getElementsByClassName('day')!=null){
-    loggedInUser.mealPlan.forEach(function(el){
-        let thisDate = new Date(el.date);
+if(document.getElementsByClassName('day')!=null){//assigning each planned meal to the meal planner
+    var i = users.findIndex(el => el.userID === loggedInUser);
+    console.log(i);
+    console.log(users[i]);
+    console.log(users[i].mealPlan);
+    
+    users[i].mealPlan.forEach(function(el){
+        let thisDate = new Date(el.mealPlan.date);
+        console.log(el.mealPlan.date);
+        
+        var lineBreak = document.createElement('br');
+        if(document.getElementById(thisDate.getDay()==null)){//If no meal is already planned for this day this week
         if(thisDate >= first && thisDate <= last){
-           
+           var cont = document.getElementById(thisDate.getDay());
+           var meal = document.createElement('div');
+           var mealName = document.createElement('p');
+           mealName.innerHTML = `${el.mealPlan.meal}`;
+           var mealCal = document.createElement('p');
+           mealCal.innerHTML = `Calories: ${el.mealPlan.cals}kcals `;
+           var mealProt = document.createElement('p');
+           mealProt.innerHTML = `Protein: ${el.mealPlan.prot}g `;
+           var mealFat = document.createElement('p');
+           mealFat.innerHTML = `Fat: ${el.mealPlan.fat}g`;
+           meal.appendChild(mealName);
+           meal.appendChild(lineBreak);
+           meal.appendChild(mealCal);
+           meal.appendChild(mealFat);
+           cont.appendChild(meal);
+           cont.appendChild(lineBreak);
         }
+    }else
+        {
+            if(thisDate >= first && thisDate <= last){//if a meal is already planned for this day this week
+           var meal = document.createElement('div');
+           var mealName = document.createElement('p');
+           mealName.innerHTML = `${el.mealPlan.meal}`;
+           var mealCal = document.createElement('p');
+           mealCal.innerHTML = `Calories: ${el.mealPlan.cals}kcals `;
+           var mealProt = document.createElement('p');
+           mealProt.innerHTML = `Protein: ${el.mealPlan.prot}g `;
+           var mealFat = document.createElement('p');
+           mealFat.innerHTML = `Fat: ${el.mealPlan.fat}g`;
+           meal.appendChild(mealName);
+           meal.appendChild(lineBreak);
+           meal.appendChild(mealCal);
+           meal.appendChild(mealFat);
+           cont.appendChild(meal);
+           cont.appendChild(lineBreak);
+        }
+    }
     })
 }
 
