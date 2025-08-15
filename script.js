@@ -1,6 +1,11 @@
 
 let users= [];
 var loggedInUser;
+let date = new Date(users[0].mealPlan[0].date); //Don't like Dates
+let firstOfWeek = date.getUTCDate() - date.getUTCDay();
+let startOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),firstOfWeek));
+let lastOfWeek = date.getUTCDate()+(6-date.getUTCDay());
+let endOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),lastOfWeek));
 document.body.onload= checkUser();
 const aTags = document.querySelectorAll("a");
 aTags.forEach(function(el){//modifies functionality of a tags
@@ -116,15 +121,13 @@ if(loggedInUser!=null){
 }
 }
 
-    if(document.getElementById('logoutButton')!=null){//adds logout button functionality if logout button exists
+if(document.getElementById('logoutButton')!=null){//adds logout button functionality if logout button exists
     document.getElementById('logoutButton').addEventListener('click',function(){
     loggedInUser = null;
     localStorage.setItem('loggedUser',null);
     location.reload();
     });
 }
-
-
 
 if(document.getElementById('loginButton')){//Login Button functionality
 document.getElementById('loginButton').addEventListener('click',function()
@@ -195,18 +198,6 @@ if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add fu
         })
     });
 }
-
-
-let date = new Date(users[0].mealPlan[0].date);
-
-let firstOfWeek = date.getUTCDate() - date.getUTCDay();
-let startOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),firstOfWeek));
-
-
-let lastOfWeek = date.getUTCDate()+(6-date.getUTCDay());
-let endOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),lastOfWeek));
-
-
 
 if(document.getElementsByClassName('day')!=null){//assigning each planned meal to the meal planner
     var i = users.findIndex(el => el.userID === loggedInUser);
