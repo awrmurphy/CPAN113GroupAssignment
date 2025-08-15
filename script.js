@@ -181,11 +181,115 @@ if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add fu
     addMeal.forEach(function(el){
         el.addEventListener('click',function(){
             var Parent = this.parentNode;
-            var newMeal = new mealPlan(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').value,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML);
+            var newMeal = new mealPlan(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').valueAsDate,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML);
+            
             var i = users.findIndex(el => el.userID === loggedInUser);
+            if(users[i].mealPlan!=null){
             users[i].mealPlan.push(newMeal);
+            localStorage.setItem('users',JSON.stringify(users));
+            }else{
+                users[i].mealPlan =[newMeal];
+                localStorage.setItem('users',JSON.stringify(users));
+            }
+            
         })
     });
+}
+
+
+let date = new Date(users[0].mealPlan[0].date);
+
+let firstOfWeek = date.getUTCDate() - date.getUTCDay();
+let startOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),firstOfWeek));
+
+
+let lastOfWeek = date.getUTCDate()+(6-date.getUTCDay());
+let endOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),lastOfWeek));
+
+
+
+if(document.getElementsByClassName('day')!=null){//assigning each planned meal to the meal planner
+    var i = users.findIndex(el => el.userID === loggedInUser);
+    
+    users[i].mealPlan.forEach(function(el){
+        
+        let thisDay = new Date(el.date);
+        let day = thisDay.getUTCDate();
+        let month = thisDay.getUTCMonth();
+        let year = thisDay.getUTCFullYear();
+        
+        var lineBreak = document.createElement('br');
+
+        if(document.getElementById('menu')==null){//If no menu is already made for this day this week
+    
+            
+        if(thisDay >= startOfWeek && thisDay <= endOfWeek){
+ 
+            
+           var cont = document.createElement('div');
+           cont.setAttribute('id','menu');
+           var meal = document.createElement('div');
+           var mealName = document.createElement('p');
+           mealName.innerHTML = `${el.meal}`;
+           var mealCal = document.createElement('p');
+           mealCal.innerHTML = `Calories: ${el.cals}kcals `;
+           var mealProt = document.createElement('p');
+           mealProt.innerHTML = `Protein: ${el.prot}g `;
+           var mealFat = document.createElement('p');
+           mealFat.innerHTML = `Fat: ${el.fat}g`;
+           meal.appendChild(mealName);
+           meal.appendChild(lineBreak);
+           meal.appendChild(mealCal);
+           meal.appendChild(mealProt);
+           meal.appendChild(mealFat);
+           cont.appendChild(meal);
+           cont.appendChild(lineBreak);
+           document.getElementById(`${thisDay.getUTCDay()}`).appendChild(cont);
+           let cal = Number(document.getElementById('calTotal'+`${thisDay.getUTCDay()}`).value);
+           cal = cal+Number(el.cals);          
+           document.getElementById('calTotal'+`${thisDay.getUTCDay()}`).value =cal;
+           let pro = Number(document.getElementById('protTotal'+`${thisDay.getUTCDay()}`).value);
+           pro = pro+Number(el.prot);
+           document.getElementById('protTotal'+`${thisDay.getUTCDay()}`).value =pro;
+           let fats = Number(document.getElementById('fatTotal'+`${thisDay.getUTCDay()}`).value);
+           fats = fats+Number(el.fat);
+           document.getElementById('fatTotal'+`${thisDay.getUTCDay()}`).value =fats 
+        }
+    }else
+        {
+            if(thisDay >= startOfWeek && thisDay <= endOfWeek){//if a meal is already planned for this day this week, this is wholly redunant whole function needs to be optimized
+
+           var cont = document.createElement('div');
+           cont.setAttribute('id','menu');
+           var meal = document.createElement('div');
+           var mealName = document.createElement('p');
+           mealName.innerHTML = `${el.meal}`;
+           var mealCal = document.createElement('p');
+           mealCal.innerHTML = `Calories: ${el.cals}kcals `;
+           var mealProt = document.createElement('p');
+           mealProt.innerHTML = `Protein: ${el.prot}g `;
+           var mealFat = document.createElement('p');
+           mealFat.innerHTML = `Fat: ${el.fat}g`;
+           meal.appendChild(mealName);
+           meal.appendChild(lineBreak);
+           meal.appendChild(mealCal);
+           meal.appendChild(mealProt);
+           meal.appendChild(mealFat);
+           cont.appendChild(meal);
+           cont.appendChild(lineBreak);
+           document.getElementById(`${thisDay.getUTCDay()}`).appendChild(cont);
+           let cal = Number(document.getElementById('calTotal'+`${thisDay.getUTCDay()}`).value);
+           cal = cal+Number(el.cals);          
+           document.getElementById('calTotal'+`${thisDay.getUTCDay()}`).value =cal;
+           let pro = Number(document.getElementById('protTotal'+`${thisDay.getUTCDay()}`).value);
+           pro = pro+Number(el.prot);
+           document.getElementById('protTotal'+`${thisDay.getUTCDay()}`).value =pro;
+           let fats = Number(document.getElementById('fatTotal'+`${thisDay.getUTCDay()}`).value);
+           fats = fats+Number(el.fat);
+           document.getElementById('fatTotal'+`${thisDay.getUTCDay()}`).value =fats
+        }
+    }
+    })
 }
 
 
