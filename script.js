@@ -1,12 +1,9 @@
 
 let users= [];
 var loggedInUser;
-let date = new Date(users[0].mealPlan[0].date); //Don't like Dates
-let firstOfWeek = date.getUTCDate() - date.getUTCDay();
-let startOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),firstOfWeek));
-let lastOfWeek = date.getUTCDate()+(6-date.getUTCDay());
-let endOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),lastOfWeek));
 document.body.onload= checkUser();
+
+
 const aTags = document.querySelectorAll("a");
 aTags.forEach(function(el){//modifies functionality of a tags
     el.addEventListener('click',passCred());
@@ -170,12 +167,13 @@ document.getElementById('loginButton').addEventListener('click',function()
 }
 
 class mealPlan {
-    constructor(meal,date,cals,prot,fat) {
+    constructor(meal,date,cals,prot,fat,img) {
         this.meal = meal;
         this.date = date;
         this.cals = cals;
         this.prot = prot;
         this.fat = fat;
+        this.img = img;
     }
 }
 
@@ -184,7 +182,8 @@ if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add fu
     addMeal.forEach(function(el){
         el.addEventListener('click',function(){
             var Parent = this.parentNode;
-            var newMeal = new mealPlan(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').valueAsDate,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML);
+            var newMeal = new mealPlan(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').valueAsDate,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML,Parent.querySelector('img').src);
+            console.log(newMeal.img);
             
             var i = users.findIndex(el => el.userID === loggedInUser);
             if(users[i].mealPlan!=null){
@@ -199,6 +198,13 @@ if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add fu
     });
 }
 
+let date = new Date(); //Don't like Dates
+let firstOfWeek = date.getUTCDate() - date.getUTCDay();
+let startOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),firstOfWeek));
+let lastOfWeek = date.getUTCDate()+(6-date.getUTCDay());
+let endOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),lastOfWeek));
+
+if(window.location.href.indexOf('User.html')!==-1){
 if(document.getElementsByClassName('day')!=null){//assigning each planned meal to the meal planner
     var i = users.findIndex(el => el.userID === loggedInUser);
     
@@ -281,6 +287,7 @@ if(document.getElementsByClassName('day')!=null){//assigning each planned meal t
         }
     }
     })
+}
 }
 
 
