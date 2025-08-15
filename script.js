@@ -209,6 +209,27 @@ if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add fu
     });
 }
 
+if(document.getElementById('ateMeal')!=null){//For ate meal
+    var addMealPast = document.querySelectorAll("#ateMeal");
+    addMealPast.forEach(function(el){
+        el.addEventListener('click',function(){
+            var Parent = this.parentNode;
+            var newMeal = new mealAte(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').valueAsDate,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML,Parent.querySelector('img').src);
+            console.log(newMeal.img);
+            
+            var i = users.findIndex(el => el.userID === loggedInUser);
+            if(users[i].mealAte!=null){
+            users[i].mealAte.push(newMeal);
+            localStorage.setItem('users',JSON.stringify(users));
+            }else{
+                users[i].mealAte =[newMeal];
+                localStorage.setItem('users',JSON.stringify(users));
+            }
+            
+        })
+    });
+}
+
 let date = new Date(); //Don't like Dates
 let firstOfWeek = date.getUTCDate() - date.getUTCDay();
 let startOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),firstOfWeek));
