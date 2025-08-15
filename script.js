@@ -166,7 +166,18 @@ document.getElementById('loginButton').addEventListener('click',function()
 });
 }
 
-class mealPlan {
+class mealPlan { //meals in the future
+    constructor(meal,date,cals,prot,fat,img) {
+        this.meal = meal;
+        this.date = date;
+        this.cals = cals;
+        this.prot = prot;
+        this.fat = fat;
+        this.img = img;
+    }
+}
+
+class mealAte { //meals in the past
     constructor(meal,date,cals,prot,fat,img) {
         this.meal = meal;
         this.date = date;
@@ -301,9 +312,9 @@ mealCards.forEach(function(el,i){
         var mName = document.getElementById(`oldDate${i}MealName`);
         var mDate = document.getElementById(`oldDate${i}`);
         var mImgCont = document.getElementById(`oldDate${i}MealImage`);
-        mName.innerHTML='No Meal Planned';
+        mName.innerHTML='No Meal History Recored';
         mDate.innerHTML='N/A';
-        mImgCont.innerHTML="You haven't planned anymore meals this week";
+        mImgCont.innerHTML="You have not entered what you ate on this date.";
     }
     else
         {
