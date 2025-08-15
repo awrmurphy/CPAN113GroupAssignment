@@ -204,7 +204,7 @@ let startOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),fir
 let lastOfWeek = date.getUTCDate()+(6-date.getUTCDay());
 let endOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),lastOfWeek));
 
-if(window.location.href.indexOf('User.html')!==-1){
+if(window.location.href.indexOf('User.html')!==-1){//if on user page load meal plan
 if(document.getElementsByClassName('day')!=null){//assigning each planned meal to the meal planner
     var i = users.findIndex(el => el.userID === loggedInUser);
     
@@ -290,5 +290,39 @@ if(document.getElementsByClassName('day')!=null){//assigning each planned meal t
 }
 }
 
-
+if(window.location.href.indexOf('History.html')!==-1){//if on history page load history
+    
+var mealCards = document.querySelectorAll('.mealCard');
+var index = users.findIndex(el => el.userID === loggedInUser);
+mealCards.forEach(function(el,i){  
+    console.log(users[index].mealPlan[users[index].mealPlan.length-i-1]);
+    
+    if(users[index].mealPlan[users[index].mealPlan.length-i-1]==undefined ){
+        var mName = document.getElementById(`oldDate${i}MealName`);
+        var mDate = document.getElementById(`oldDate${i}`);
+        var mImgCont = document.getElementById(`oldDate${i}MealImage`);
+        mName.innerHTML='No Meal Planned';
+        mDate.innerHTML='N/A';
+        mImgCont.innerHTML="You haven't planned anymore meals this week";
+    }
+    else
+        {
+            var mName = document.getElementById(`oldDate${i}MealName`);
+            var mDate = document.getElementById(`oldDate${i}`);
+            var mImgCont = document.getElementById(`oldDate${i}MealImage`);
+            var mImg = document.createElement('img');
+            mImg.setAttribute('id','mealImage');
+            
+            mName.innerHTML=`${users[index].mealPlan[users[index].mealPlan.length-i-1].meal}`;
+            mDate.innerHTML=`${users[index].mealPlan[users[index].mealPlan.length-i-1].date}`;
+            mImg.setAttribute('src',`${users[index].mealPlan[users[index].mealPlan.length-i-1].img}`);
+            mImgCont.appendChild(mImg);
+        }
+    }
+);
+if(users[index].mealPlan!=undefined){
+    var message=document.getElementById('showIfEmpty');
+    message.style.visibility='hidden';
+}
+}
     
