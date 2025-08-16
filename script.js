@@ -2,6 +2,8 @@
 let users= [];
 var loggedInUser;
 document.body.onload= checkUser();
+
+
 const aTags = document.querySelectorAll("a");
 aTags.forEach(function(el){//modifies functionality of a tags
     el.addEventListener('click',passCred());
@@ -116,15 +118,13 @@ if(loggedInUser!=null){
 }
 }
 
-    if(document.getElementById('logoutButton')!=null){//adds logout button functionality if logout button exists
+if(document.getElementById('logoutButton')!=null){//adds logout button functionality if logout button exists
     document.getElementById('logoutButton').addEventListener('click',function(){
     loggedInUser = null;
     localStorage.setItem('loggedUser',null);
     location.reload();
     });
 }
-
-
 
 if(document.getElementById('loginButton')){//Login Button functionality
 document.getElementById('loginButton').addEventListener('click',function()
@@ -166,12 +166,195 @@ document.getElementById('loginButton').addEventListener('click',function()
 });
 }
 
-class mealPlan {
-    constructor(meal,date,cals,prot,fat) {
+class mealPlan { //meals in the future
+    constructor(meal,date,cals,prot,fat,img) {
         this.meal = meal;
         this.date = date;
         this.cals = cals;
         this.prot = prot;
         this.fat = fat;
+        this.img = img;
     }
 }
+
+class mealAte { //meals in the past
+    constructor(meal,date,cals,prot,fat,img) {
+        this.meal = meal;
+        this.date = date;
+        this.cals = cals;
+        this.prot = prot;
+        this.fat = fat;
+        this.img = img;
+    }
+}
+
+if(document.getElementById('planMeal')!=null){//if planMeal buttons exist add functionality
+    var addMeal = document.querySelectorAll("#planMeal");
+    addMeal.forEach(function(el){
+        el.addEventListener('click',function(){
+            var Parent = this.parentNode;
+            var newMeal = new mealPlan(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').valueAsDate,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML,Parent.querySelector('img').src);
+            console.log(newMeal.img);
+            
+            var i = users.findIndex(el => el.userID === loggedInUser);
+            if(users[i].mealPlan!=null){
+            users[i].mealPlan.push(newMeal);
+            localStorage.setItem('users',JSON.stringify(users));
+            }else{
+                users[i].mealPlan =[newMeal];
+                localStorage.setItem('users',JSON.stringify(users));
+            }
+            
+        })
+    });
+}
+
+if(document.getElementById('ateMeal')!=null){//For ate meal
+    var addMealPast = document.querySelectorAll("#ateMeal");
+    addMealPast.forEach(function(el){
+        el.addEventListener('click',function(){
+            var Parent = this.parentNode;
+            var newMeal = new mealAte(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').valueAsDate,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML,Parent.querySelector('img').src);
+            console.log(newMeal.img);
+            
+            var i = users.findIndex(el => el.userID === loggedInUser);
+            if(users[i].mealAte!=null){
+            users[i].mealAte.push(newMeal);
+            localStorage.setItem('users',JSON.stringify(users));
+            }else{
+                users[i].mealAte =[newMeal];
+                localStorage.setItem('users',JSON.stringify(users));
+            }
+            
+        })
+    });
+}
+
+let date = new Date(); //Don't like Dates
+let firstOfWeek = date.getUTCDate() - date.getUTCDay();
+let startOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),firstOfWeek));
+let lastOfWeek = date.getUTCDate()+(6-date.getUTCDay());
+let endOfWeek = new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),lastOfWeek));
+
+if(window.location.href.indexOf('User.html')!==-1){//if on user page load meal plan
+if(document.getElementsByClassName('day')!=null){//assigning each planned meal to the meal planner
+    var i = users.findIndex(el => el.userID === loggedInUser);
+    
+    users[i].mealPlan.forEach(function(el){
+        
+        let thisDay = new Date(el.date);
+        let day = thisDay.getUTCDate();
+        let month = thisDay.getUTCMonth();
+        let year = thisDay.getUTCFullYear();
+        
+        var lineBreak = document.createElement('br');
+
+        if(document.getElementById('menu')==null){//If no menu is already made for this day this week
+    
+            
+        if(thisDay >= startOfWeek && thisDay <= endOfWeek){
+ 
+            
+           var cont = document.createElement('div');
+           cont.setAttribute('id','menu');
+           var meal = document.createElement('div');
+           var mealName = document.createElement('p');
+           mealName.innerHTML = `${el.meal}`;
+           var mealCal = document.createElement('p');
+           mealCal.innerHTML = `Calories: ${el.cals}kcals `;
+           var mealProt = document.createElement('p');
+           mealProt.innerHTML = `Protein: ${el.prot}g `;
+           var mealFat = document.createElement('p');
+           mealFat.innerHTML = `Fat: ${el.fat}g`;
+           meal.appendChild(mealName);
+           meal.appendChild(lineBreak);
+           meal.appendChild(mealCal);
+           meal.appendChild(mealProt);
+           meal.appendChild(mealFat);
+           cont.appendChild(meal);
+           cont.appendChild(lineBreak);
+           document.getElementById(`${thisDay.getUTCDay()}`).appendChild(cont);
+           let cal = Number(document.getElementById('calTotal'+`${thisDay.getUTCDay()}`).value);
+           cal = cal+Number(el.cals);          
+           document.getElementById('calTotal'+`${thisDay.getUTCDay()}`).value =cal;
+           let pro = Number(document.getElementById('protTotal'+`${thisDay.getUTCDay()}`).value);
+           pro = pro+Number(el.prot);
+           document.getElementById('protTotal'+`${thisDay.getUTCDay()}`).value =pro;
+           let fats = Number(document.getElementById('fatTotal'+`${thisDay.getUTCDay()}`).value);
+           fats = fats+Number(el.fat);
+           document.getElementById('fatTotal'+`${thisDay.getUTCDay()}`).value =fats 
+        }
+    }else
+        {
+            if(thisDay >= startOfWeek && thisDay <= endOfWeek){//if a meal is already planned for this day this week, this is wholly redunant whole function needs to be optimized
+
+           var cont = document.createElement('div');
+           cont.setAttribute('id','menu');
+           var meal = document.createElement('div');
+           var mealName = document.createElement('p');
+           mealName.innerHTML = `${el.meal}`;
+           var mealCal = document.createElement('p');
+           mealCal.innerHTML = `Calories: ${el.cals}kcals `;
+           var mealProt = document.createElement('p');
+           mealProt.innerHTML = `Protein: ${el.prot}g `;
+           var mealFat = document.createElement('p');
+           mealFat.innerHTML = `Fat: ${el.fat}g`;
+           meal.appendChild(mealName);
+           meal.appendChild(lineBreak);
+           meal.appendChild(mealCal);
+           meal.appendChild(mealProt);
+           meal.appendChild(mealFat);
+           cont.appendChild(meal);
+           cont.appendChild(lineBreak);
+           document.getElementById(`${thisDay.getUTCDay()}`).appendChild(cont);
+           let cal = Number(document.getElementById('calTotal'+`${thisDay.getUTCDay()}`).value);
+           cal = cal+Number(el.cals);          
+           document.getElementById('calTotal'+`${thisDay.getUTCDay()}`).value =cal;
+           let pro = Number(document.getElementById('protTotal'+`${thisDay.getUTCDay()}`).value);
+           pro = pro+Number(el.prot);
+           document.getElementById('protTotal'+`${thisDay.getUTCDay()}`).value =pro;
+           let fats = Number(document.getElementById('fatTotal'+`${thisDay.getUTCDay()}`).value);
+           fats = fats+Number(el.fat);
+           document.getElementById('fatTotal'+`${thisDay.getUTCDay()}`).value =fats
+        }
+    }
+    })
+}
+}
+
+if(window.location.href.indexOf('History.html')!==-1){//if on history page load history
+    
+var mealCards = document.querySelectorAll('.mealCard');
+var index = users.findIndex(el => el.userID === loggedInUser);
+mealCards.forEach(function(el,i){  
+    console.log(users[index].mealPlan[users[index].mealPlan.length-i-1]);
+    
+    if(users[index].mealPlan[users[index].mealPlan.length-i-1]==undefined ){
+        var mName = document.getElementById(`oldDate${i}MealName`);
+        var mDate = document.getElementById(`oldDate${i}`);
+        var mImgCont = document.getElementById(`oldDate${i}MealImage`);
+        mName.innerHTML='No Meal History Recored';
+        mDate.innerHTML='N/A';
+        mImgCont.innerHTML="You have not entered what you ate on this date.";
+    }
+    else
+        {
+            var mName = document.getElementById(`oldDate${i}MealName`);
+            var mDate = document.getElementById(`oldDate${i}`);
+            var mImgCont = document.getElementById(`oldDate${i}MealImage`);
+            var mImg = document.createElement('img');
+            mImg.setAttribute('id','mealImage');
+            
+            mName.innerHTML=`${users[index].mealPlan[users[index].mealPlan.length-i-1].meal}`;
+            mDate.innerHTML=`${users[index].mealPlan[users[index].mealPlan.length-i-1].date}`;
+            mImg.setAttribute('src',`${users[index].mealPlan[users[index].mealPlan.length-i-1].img}`);
+            mImgCont.appendChild(mImg);
+        }
+    }
+);
+if(users[index].mealPlan!=undefined){
+    var message=document.getElementById('showIfEmpty');
+    message.style.visibility='hidden';
+}
+}
+    
