@@ -214,7 +214,7 @@ if(document.getElementById('ateMeal')!=null){//For ate meal
     addMealPast.forEach(function(el){
         el.addEventListener('click',function(){
             var Parent = this.parentNode;
-            var newMeal = new mealAte(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date').valueAsDate,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML,Parent.querySelector('img').src);
+            var newMeal = new mealAte(Parent.querySelector('#mealName').innerHTML,Parent.querySelector('#date2').valueAsDate,Parent.querySelector('#calories').innerHTML,Parent.querySelector('#protein').innerHTML,Parent.querySelector('#fat').innerHTML,Parent.querySelector('img').src);
             console.log(newMeal.img);
             
             var i = users.findIndex(el => el.userID === loggedInUser);
@@ -327,15 +327,16 @@ if(window.location.href.indexOf('History.html')!==-1){//if on history page load 
 var mealCards = document.querySelectorAll('.mealCard');
 var index = users.findIndex(el => el.userID === loggedInUser);
 mealCards.forEach(function(el,i){  
-    console.log(users[index].mealPlan[users[index].mealPlan.length-i-1]);
+    console.log(users[index].mealAte[users[index].mealAte.length-i-1]);
     
-    if(users[index].mealPlan[users[index].mealPlan.length-i-1]==undefined ){
+    if(users[index].mealAte[users[index].mealAte.length-i-1]==undefined ){
         var mName = document.getElementById(`oldDate${i}MealName`);
         var mDate = document.getElementById(`oldDate${i}`);
         var mImgCont = document.getElementById(`oldDate${i}MealImage`);
-        mName.innerHTML='No Meal History Recored';
-        mDate.innerHTML='N/A';
-        mImgCont.innerHTML="You have not entered what you ate on this date.";
+        //Dont need the following, just makes it look bad
+        //mName.innerHTML='No Meal History Recored';
+        //mDate.innerHTML='N/A';
+        //mImgCont.innerHTML="You have not entered what you ate on this date.";
     }
     else
         {
@@ -345,14 +346,14 @@ mealCards.forEach(function(el,i){
             var mImg = document.createElement('img');
             mImg.setAttribute('id','mealImage');
             
-            mName.innerHTML=`${users[index].mealPlan[users[index].mealPlan.length-i-1].meal}`;
-            mDate.innerHTML=`${users[index].mealPlan[users[index].mealPlan.length-i-1].date}`;
-            mImg.setAttribute('src',`${users[index].mealPlan[users[index].mealPlan.length-i-1].img}`);
+            mName.innerHTML=`${users[index].mealAte[users[index].mealAte.length-i-1].meal}`;
+            mDate.innerHTML=`${users[index].mealAte[users[index].mealAte.length-i-1].date}`;
+            mImg.setAttribute('src',`${users[index].mealAte[users[index].mealAte.length-i-1].img}`);
             mImgCont.appendChild(mImg);
         }
     }
 );
-if(users[index].mealPlan!=undefined){
+if(users[index].mealAte!=undefined){
     var message=document.getElementById('showIfEmpty');
     message.style.visibility='hidden';
 }
