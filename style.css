@@ -194,6 +194,9 @@ h4 {
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
+    display: contain;
+    flex-direction: column;
+    align-items: center;
 }
 
 .meal-title {
@@ -233,12 +236,19 @@ h4 {
 }
 
 .meal-card img {
-    width: 20%;
-    height: 20;
+    width: 100%;
+    height: 150px;
     object-fit:contain;
     border-bottom: 1px solid #f4f1f1;
+    margin-bottom: 15px;
+    border-radius: 8px;
 }
 
+.meal-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+ 
 .day{
     display: block;
     width: 200px;
@@ -262,6 +272,6 @@ h4 {
 
     .meal-card img {
         width: 100%;
-        height: auto;
+    
     }
 }

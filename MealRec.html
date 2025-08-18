@@ -9,8 +9,6 @@
 </head>
 <body>
 
-<div class="container">
-
 <!-- Smart Meal Options -->
 <section class="smart-meal-options">
     <h2>Meal Recommendations</h2>
@@ -27,7 +25,7 @@
 
     <div class="meal-card">
         <img src="images/tuna sandwich.jpeg" alt="Tuna Sandwich">
-        <h3>Tuna Salad Sandwich on Whole Wheat Bread </h3>
+        <h3 id="mealName">Tuna Salad Sandwich on Whole Wheat Bread </h3>
         <span>Calories:</span> <span id="calories">253</span><span>kcal | Protein: </span><span id="protein">27</span><span>g | Fat: </span><span id="fat">20</span><span>g</span>
         <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
         <br>    
@@ -49,11 +47,9 @@
     <div class="meal-category">
   <p>Start your day with these low-calorie breakfast ideas.</p>
         <h4>Breakfast</h4>
-        <div class="meal-grid">
             <div class="meal-card">
                 <img src="images/AvocadoToastwithEgg.jpg" alt="Avocado Toast with Eggs">
-                <div class="meal-info">
-                    <div class="meal-title">Avocado Toast with Eggs</div>
+                    <h3 id="mealName">Avocado Toast with Eggs</h3>
                      <span>Calories:</span> <span id="calories">400</span><span>kcal | Protein: </span><span id="protein">20</span><span>g | Fat: </span><span id="fat">25</span><span>g</span>
                      <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                      <br>
@@ -63,8 +59,7 @@
             </div>
             <div class="meal-card">
                 <img src="images/berry cottage cheese breakfast bowl.jpeg" alt="Berry Cottage Cheese Breakfast Bowl">
-                <div class="meal-info">
-                    <div class="meal-title">Berry Cottage Cheese Breakfast Bowl</div>
+                     <h3 id="mealName">Berry Cottage Cheese Breakfast Bowl</h3>
                     <span>Calories:</span> <span id="calories">300</span><span>kcal | Protein: </span><span id="protein">25</span><span>g | Fat: </span><span id="fat">12</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -78,58 +73,46 @@
     <div class="meal-category">
     <p>Easy low-carb lunch ideas to keep you on track.</p>
         <h4>Lunch</h4>
-        <div class="meal-grid">
+        
             <div class="meal-card">
                 <img src="images/grilled-chicken-salad-.jpg" alt="Grilled Chicken Salad">
-                <div class="meal-info">
-                    <div class="meal-title">Grilled Chicken Salad</div>
+                    <h3 id="mealName">Grilled Chicken Salad</h3>
                     <span>Calories:</span> <span id="calories">350</span><span>kcal | Protein: </span><span id="protein">30</span><span>g | Fat: </span><span id="fat">25</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
                     <input type="date" id="date2"> <button id="ateMeal">I Ate This Meal</button>
                 </div>
             </div>
+        </div>
             <div class="meal-card">
                 <img src="images/Buffalo chicken rice bowls.jpeg" alt="Buffalo Chicken Rice Bowls">
-                <div class="meal-info">
-                    <div class="meal-title">Buffalo Chicken Rice Bowls</div>
+                    <h3 id="mealName">Buffalo Chicken Rice Bowls</h3>
                     <span>Calories:</span> <span id="calories">600</span><span>kcal | Protein: </span><span id="protein">45</span><span>g | Fat: </span><span id="fat">25</span><span>g</span>
                     <input type="date" id="date1"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>        
-                    <input type="date" id="date2"> <button id="ateMeal">I Ate This Meal</button>
-                </div>
-            </div>
-        </div>
-        
+                    <input type="date" id="date2"> <button id="ateMeal">I Ate This Meal</button>  
     </div>
 
     <div class="meal-category">
       <p>Super satisfying dinner ideas filled with flavor.</p>
         <h4>Dinner</h4>
-        <div class="meal-grid">
-            <div class="meal-card">
+        <div class="meal-card">
                 <img src="images/salmon-caesar-small-1.jpg" alt="Salmon Caesar Salad">
-                <div class="meal-info">
-                    <div class="meal-title">Salmon Caesar Salad</div>
+                    <h3 id="mealName">Salmon Caesar Salad</h3>
                     <span>Calories:</span> <span id="calories">450</span><span>kcal | Protein: </span><span id="protein">35</span><span>g | Fat: </span><span id="fat">25</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
                     <input type="date" id="date2"> <button id="ateMeal">I Ate This Meal</button>
                 </div>
-            </div>
+            
             <div class="meal-card">
                 <img src="images/crock pot chicken tacos.jpeg" alt="Crock Pot Chicken Tacos">
-                <div class="meal-info">
-                    <div class="meal-title">Crock Pot Chicken Tacos</div>
+                    <h3 id="mealName">Crock Pot Chicken Tacos</h3>
                     <span>Calories:</span> <span id="calories">350</span><span>kcal | Protein: </span><span id="protein">30</span><span>g | Fat: </span><span id="fat">15</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
                     <input type="date" id="date2"> <button id="ateMeal">I Ate This Meal</button>
                 </div>
-            </div>
-        </div>
-        
-    </div>
 </section>
 
 <!-- Chronic Condition Profile -->
@@ -139,11 +122,10 @@
     <div class="meal-category">
       <p>High-quality protein options perfect for diabetes or heart conditions.</p>
         <h4>Breakfast</h4>
-        <div class="meal-grid">
+       
             <div class="meal-card">
                 <img src="images/scrambled eggs with spinach and toast.jpeg" alt="Scrambled Eggs with Spinach">
-                <div class="meal-info">
-                    <div class="meal-title">Scrambled Eggs with Spinach and Toast</div>
+                    <h3 id="mealName">Scrambled Eggs with Spinach and Toast</h3>
                     <span>Calories:</span> <span id="calories">350</span><span>kcal | Protein: </span><span id="protein">25</span><span>g | Fat: </span><span id="fat">20</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -152,8 +134,7 @@
             </div>
             <div class="meal-card">
                 <img src="images/overnight oats.jpeg" alt="Overnight Oats">
-                <div class="meal-info">
-                    <div class="meal-title">Overnight Oats with Berries and Nuts</div>
+                    <h3 id="mealName">Overnight Oats with Berries and Nuts</h3>
                     <span>Calories:</span> <span id="calories">300</span><span>kcal | Protein: </span><span id="protein">10</span><span>g | Fat: </span><span id="fat">15</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -167,11 +148,10 @@
     <div class="meal-category">
         <p>Iron and folate rich options that support heart health.</p>
         <h4>Lunch</h4>
-        <div class="meal-grid">
+    
             <div class="meal-card">
                 <img src="images/lentil soup.jpeg" alt="Lentil Soup">
-                <div class="meal-info">
-                    <div class="meal-title">Lentil Soup with Whole Grain Bread</div>
+                    <h3 id="mealName">Lentil Soup with Whole Grain Bread</h3>
                     <span>Calories:</span> <span id="calories">350</span><span>kcal | Protein: </span><span id="protein">20</span><span>g | Fat: </span><span id="fat">5</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -180,8 +160,7 @@
             </div>
             <div class="meal-card">
                 <img src="images/grilled with quinoa.jpeg" alt="Grilled Chicken Salad">
-                <div class="meal-info">
-                    <div class="meal-title">Grilled Chicken & Quinoa Salad with Veggies</div>
+                    <h3 id="mealName">Grilled Chicken & Quinoa Salad with Veggies</h3>
                     <span>Calories:</span> <span id="calories">400</span><span>kcal | Protein: </span><span id="protein">35</span><span>g | Fat: </span><span id="fat">18</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>    
@@ -195,11 +174,9 @@
     <div class="meal-category">
          <p>High in omega-3s, diabetic and heart-friendly.</p>
         <h4>Dinner</h4>
-        <div class="meal-grid">
             <div class="meal-card">
                 <img src="images/baked salmon with veg.webp" alt="Baked Salmon">
-                <div class="meal-info">
-                    <div class="meal-title">Baked Salmon with Roasted Vegetables</div>
+                    <h3 id="mealName">Baked Salmon with Roasted Vegetables</h3>
                     <span>Calories:</span> <span id="calories">500</span><span>kcal | Protein: </span><span id="protein">45</span><span>g | Fat: </span><span id="fat">30</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -208,8 +185,7 @@
             </div>
             <div class="meal-card">
                 <img src="images/chicken stir fry.jpeg" alt="Chicken Stir-Fry">
-                <div class="meal-info">
-                    <div class="meal-title">Chicken Stir-Fry with Brown Rice</div>
+                    <h3 id="mealName">Chicken Stir-Fry with Brown Rice</h3>
                     <span>Calories:</span> <span id="calories">400</span><span>kcal | Protein: </span><span id="protein">30</span><span>g | Fat: </span><span id="fat">12</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -229,11 +205,10 @@
         <p>Nutritious and filling with a good source of healthy fats.</p>
         
         <h4>Breakfast</h4>
-        <div class="meal-grid">
+    
             <div class="meal-card">
                 <img src="images/yogurt and fruit parfaits.jpeg" alt="Yogurt Parfait">
-                <div class="meal-info">
-                    <div class="meal-title">Yogurt and Fruit Parfaits</div>
+                    <h3 id="mealName">Yogurt and Fruit Parfaits</h3>
                     <span>Calories:</span> <span id="calories">300</span><span>kcal | Protein: </span><span id="protein">15</span><span>g | Fat: </span><span id="fat">5</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -242,8 +217,7 @@
             </div>
             <div class="meal-card">
                 <img src="images/Loaded Avocado.jpeg" alt="Avocado Toast">
-                <div class="meal-info">
-                    <div class="meal-title">Loaded Avocado Toast</div>
+                    <h3 id="mealName">Loaded Avocado Toast</h3>
                     <span>Calories:</span> <span id="calories">300</span><span>kcal | Protein: </span><span id="protein">8</span><span>g | Fat: </span><span id="fat">12</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -257,11 +231,11 @@
     <div class="meal-category">
          <p>Protein-packed and kid-friendly veggie options.</p>
         <h4>Lunch</h4>
-        <div class="meal-grid">
+        
             <div class="meal-card">
                 <img src="images/veggie q.jpeg" alt="Veggie Quesadillas">
-                <div class="meal-info">
-                    <div class="meal-title">Veggie Quesadillas</div>
+                
+                    <h3 id="mealName">Veggie Quesadillas</h3>
                     <span>Calories:</span> <span id="calories">450</span><span>kcal | Protein: </span><span id="protein">18</span><span>g | Fat: </span><span id="fat">20</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -270,8 +244,8 @@
             </div>
             <div class="meal-card">
                 <img src="images/italian pasta salad.jpeg" alt="Italian Pasta Salad">
-                <div class="meal-info">
-                    <div class="meal-title">Italian Pasta Salad</div>
+
+                    <h3 id="mealName">Italian Pasta Salad</h3>
                     <span>Calories:</span> <span id="calories">350</span><span>kcal | Protein: </span><span id="protein">12</span><span>g | Fat: </span><span id="fat">18</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -285,11 +259,10 @@
     <div class="meal-category">
           <p>Minimal cleanup and balanced nutrition.</p>
         <h4>Dinner</h4>
-        <div class="meal-grid">
+        
             <div class="meal-card">
                 <img src="images/slow cooker.jpeg" alt="Beef and Broccoli">
-                <div class="meal-info">
-                    <div class="meal-title">Slow Cooker Beef and Broccoli</div>
+                 <h3 id="mealName">Slow Cooker Beef and Broccoli</h3>
                     <span>Calories:</span> <span id="calories">450</span><span>kcal | Protein: </span><span id="protein">40</span><span>g | Fat: </span><span id="fat">25</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
@@ -298,8 +271,7 @@
             </div>
             <div class="meal-card">
                 <img src="images/one pot.jpeg" alt="One Pot Chicken and Rice">
-                <div class="meal-info">
-                    <div class="meal-title">One-Pot Chicken and Rice</div>
+                    <h3 id="mealName">One Pot Chicken and Rice</h3>
                     <span>Calories:</span> <span id="calories">350</span><span>kcal | Protein: </span><span id="protein">30</span><span>g | Fat: </span><span id="fat">10</span><span>g</span>
                     <input type="date" id="date"> <button id="planMeal">I Want To Eat This Meal</button>
                     <br>
